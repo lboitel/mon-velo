@@ -43,6 +43,7 @@ def generate_number_to_name():
     
     df = pd.DataFrame(data).sort_values(by='station_numbers')
     current_date = datetime.now()
+    print(f'WE COLLECTED {current_date.strftime("%d-%m-%Y")}')
     df.to_csv(f'mon-velo/collecte_data/data_stations/{current_date.strftime("%d-%m-%Y")}.csv', index=False)
     
 generate_number_to_name()
