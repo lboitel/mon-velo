@@ -3,6 +3,14 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+
+collecte_data/data_stations 
+collecte_data/dispo_velos
+
+modele/*.csv
+modele/modeles/*.csv
+
+
 # C extensions
 *.so
 

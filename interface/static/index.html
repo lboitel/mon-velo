@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mon Vélo — Affluence Toulouse</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>🚲 Mon Vélo</h1>
+  <div class="recherche">
+    <input id="recherche-station" type="text" placeholder="Rechercher une station...">
+    <select id="select-station"></select>
+  </div>
+</header>
+
+<main>
+  <div id="carte"></div>
+
+  <section id="panneau" class="cache">
+    <h2 id="nom-station"></h2>
+    <p id="info-station"></p>
+
+    <nav class="onglets">
+      <button class="onglet-bouton actif" data-onglet="prediction">Prédiction</button>
+      <button class="onglet-bouton" data-onglet="stats">Statistiques avancées</button>
+    </nav>
+
+    <div id="onglet-prediction" class="onglet-contenu">
+      <div class="ligne-controles">
+        <label>Date <input type="date" id="date-prediction"></label>
+        <label>Heure <input type="range" id="heure-prediction" min="0" max="23" step="1"> <span id="heure-affichee"></span>h</label>
+      </div>
+      <div id="resultat-prediction" class="resultat"></div>
+    </div>
+
+    <div id="onglet-stats" class="onglet-contenu cache">
+      <div class="bloc-graphique">
+        <h3>Prévision sur la journée sélectionnée</h3>
+        <canvas id="graphique-jour"></canvas>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<script src="app.js"></script>
+</body>
+</html>

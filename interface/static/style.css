@@ -1,0 +1,216 @@
+:root {
+  --blue: #2563eb;
+  --orange: #f97316;
+  --background: #fafafa;
+  --text: #1f2330;
+  --text-muted: #8a8f99;
+  --border: #ececec;
+
+  --green-bg: #ecfbf0;
+  --green-text: #1f8a43;
+  --orange-bg: #fff4e5;
+  --orange-text: #b9650a;
+  --red-bg: #fdecec;
+  --red-text: #c81e1e;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, "Segoe UI", system-ui, sans-serif;
+  background: var(--background);
+  color: var(--text);
+}
+
+header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background: white;
+  border-bottom: 1px solid var(--border);
+}
+
+header h1 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.recherche {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.recherche input, .recherche select {
+  padding: 0.5rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  background: var(--background);
+}
+
+.recherche select {
+  min-width: 220px;
+}
+
+main {
+  display: flex;
+  height: calc(100vh - 65px);
+}
+
+#carte {
+  flex: 1.1;
+  height: 100%;
+}
+
+#panneau {
+  flex: 1;
+  max-width: 520px;
+  overflow-y: auto;
+  padding: 1.75rem 2rem;
+  background: white;
+  border-left: 1px solid var(--border);
+}
+
+#panneau.cache {
+  display: none;
+}
+
+#nom-station {
+  margin: 0 0 0.15rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+#info-station {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin: 0 0 1.5rem;
+}
+
+.onglets {
+  display: flex;
+  gap: 1.5rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1.5rem;
+}
+
+.onglet-bouton {
+  background: none;
+  border: none;
+  padding: 0.5rem 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+}
+
+.onglet-bouton.actif {
+  color: var(--text);
+  font-weight: 600;
+  border-bottom-color: var(--blue);
+}
+
+.onglet-contenu.cache {
+  display: none;
+}
+
+.ligne-controles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.ligne-controles label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.ligne-controles input[type="date"] {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.9rem;
+}
+
+.ligne-controles input[type="range"] {
+  width: 200px;
+}
+
+.resultat {
+  display: flex;
+  gap: 1rem;
+}
+
+.carte-risque {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 1.75rem 1rem;
+  border-radius: 14px;
+  text-align: center;
+}
+
+.carte-risque-icone {
+  font-size: 2.2rem;
+  margin-bottom: 0.2rem;
+}
+
+.carte-risque-titre {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.65;
+}
+
+.carte-risque-etat {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.carte-risque.safe { background: var(--green-bg); color: var(--green-text); }
+.carte-risque.uncertain { background: var(--orange-bg); color: var(--orange-text); }
+.carte-risque.high_risk { background: var(--red-bg); color: var(--red-text); }
+
+.bloc-graphique {
+  margin-bottom: 2.5rem;
+}
+
+.bloc-graphique h3 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.8rem;
+}
+
+.leaflet-popup-content b {
+  font-size: 0.95rem;
+}
+
+@media (max-width: 900px) {
+  main {
+    flex-direction: column;
+    height: auto;
+  }
+  #carte {
+    height: 45vh;
+  }
+  #panneau {
+    max-width: none;
+    border-left: none;
+    border-top: 1px solid var(--border);
+  }
+}

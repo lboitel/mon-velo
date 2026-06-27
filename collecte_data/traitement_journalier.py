@@ -2,7 +2,7 @@ import pandas as pd
 import os
 from datetime import datetime 
 
-# Définir les chemins des dossiers
+# Define folder paths
 temp_folder = "mon-velo/collecte_data/temp"
 output_folder = "mon-velo/collecte_data/dispo_velos"
 current_date = datetime.now()
@@ -18,23 +18,23 @@ for file_name in os.listdir(temp_folder):
         df = pd.read_csv(file_path)
         dataframes.append(df)
 
-# Concaténer tous les dataframes en un seul
-if dataframes:  # Vérifier s'il y a des dataframes à concaténer
+# Concatenate all dataframes into one
+if dataframes:  # Check whether there are any dataframes to concatenate
     combined_df = pd.concat(dataframes, ignore_index=True).sort_values(by='number')
-    # Supprimer les doublons
+    # Drop duplicates
     combined_df.drop_duplicates(inplace=True)
-    # Sauvegarder le dataframe sans doublons dans le dossier dispo_velos
+    # Save the deduplicated dataframe to the dispo_velos folder
     combined_df.to_csv(output_file, index=False)
-    print(f"Le fichier {output_file} a été créé avec succès sans doublons.")
+    print(f"File {output_file} was created successfully with duplicates removed.")
 
-    # Supprimer le contenu du dossier temp
+    # Clear out the temp folder
     for file_name in os.listdir(temp_folder):
         file_path = os.path.join(temp_folder, file_name)
         try:
             os.remove(file_path)
         except Exception as e:
-            print(f"Erreur lors de la suppression du fichier {file_path}: {e}")
+            print(f"Error while deleting file {file_path}: {e}")
 else:
-    print("Aucun fichier CSV trouvé dans le dossier temp.")
+    print("No CSV file found in the temp folder.")
 
 print('Daily processing was a success')
